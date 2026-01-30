@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
+import joblib
 
 # Charger les données
 df = pd.read_csv("students_clean.csv")
@@ -41,4 +42,18 @@ new_student = pd.DataFrame(
 prediction = pipeline.predict(new_student)
 probabilities = pipeline.predict_proba(new_student)
 print("Prediction du nouveau élève: ", prediction)
-print("Probabilité du nouveau élève: ", probabilities)
+print("Probabilité du nouvea élève: ", probabilities)
+
+# Utilisation de joblib pour pas réentrainer a chaque fois
+joblib.dump(pipeline, "student_model.pkl")
+
+# Pour recharger plus tard
+pipeline = joblib.load("student_model.pkl")
+
+new_student = pd.DataFrame(
+    [[20, 15]],
+    columns = ["age", "average"]
+)
+
+prediction = pipeline.predict(new_student)
+print("Prediction: ", prediction)
