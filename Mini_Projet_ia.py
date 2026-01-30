@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 # Charger les données
-df = pd.read_csv("/home/cvm/python_project/Projets/students_clean.csv")
+df = pd.read_csv("students_clean.csv")
 
 df["status"] = np.where(df["average"] >= 10, "PASS", "FAIL")
 
