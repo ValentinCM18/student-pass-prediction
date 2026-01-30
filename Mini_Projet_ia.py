@@ -39,4 +39,6 @@ new_student = pd.DataFrame(
 )
 
 prediction = pipeline.predict(new_student)
+probabilities = pipeline.predict_proba(new_student)
 print("Prediction du nouveau élève: ", prediction)
+print("Probabilité du nouveau élève: ", probabilities)
