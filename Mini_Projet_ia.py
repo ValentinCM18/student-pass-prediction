@@ -2,6 +2,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
 import pandas as pd
 import numpy as np
 import joblib
@@ -57,3 +58,8 @@ new_student = pd.DataFrame(
 
 prediction = pipeline.predict(new_student)
 print("Prediction: ", prediction)
+
+# Visualisation de la performance du modele avec 'confusion_matrix'
+y_pred = pipeline.predict(x_test)
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
