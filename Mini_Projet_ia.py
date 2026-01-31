@@ -63,3 +63,16 @@ print("Prediction: ", prediction)
 y_pred = pipeline.predict(x_test)
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
+
+# Probabilités de prédiction
+proba = pipeline.predict_proba(new_student)
+
+print("Probabilité FAIL :", proba[0][0])
+print("Probabilité PASS :", proba[0][1])
+
+# L'influence de la prédiction
+coefficients = pipeline.named_steps["model"].coef_[0]
+features = x.columns
+
+for f, c in zip(features, coefficients):
+    print(f"{f} influence: {c:.2f}")
