@@ -48,9 +48,6 @@ print("Probabilité du nouvea élève: ", probabilities)
 # Utilisation de joblib pour pas réentrainer a chaque fois
 joblib.dump(pipeline, "student_model.pkl")
 
-# Pour recharger plus tard
-pipeline = joblib.load("student_model.pkl")
-
 new_student = pd.DataFrame(
     [[20, 15]],
     columns = ["age", "average"]
